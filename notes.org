@@ -1,0 +1,6 @@
+#+title: Notes
+
+* Tasks
+** align calculator display text to the right
+** make parenthesis work
+** float numbers also
