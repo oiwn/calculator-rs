@@ -60,7 +60,9 @@ impl eframe::App for Calculator {
                     self.dispatch(Events::Neg);
                 }
                 let _ = ui.button("(");
-                let _ = ui.button(")");
+                if ui.button("⌫").clicked() {
+                    self.dispatch(Events::Backspace);
+                }
             });
             ui.horizontal(|ui| {
                 for num in 1..4 {

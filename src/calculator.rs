@@ -6,6 +6,7 @@ pub enum Events {
     Neg,
     Number(i64),
     Eq,
+    Backspace,
     Reset,
     #[allow(dead_code)]
     Idle,
@@ -130,6 +131,9 @@ impl Calculator {
                     self.accumulator *= 10;
                     self.accumulator += num as i64;
                 }
+            }
+            Events::Backspace => {
+                self.accumulator = self.accumulator / 10;
             }
             op @ (Events::Add | Events::Sub | Events::Mul | Events::Div) => {
                 // operation first
