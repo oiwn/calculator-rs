@@ -12,7 +12,7 @@ fn main() {
     tracing_subscriber::fmt::init();
 
     let options = eframe::NativeOptions {
-        initial_window_size: Some(egui::vec2(280.0, 380.0)),
+        initial_window_size: Some(egui::vec2(250.0, 380.0)),
         ..Default::default()
     };
     let _ = eframe::run_native(
@@ -43,12 +43,14 @@ impl eframe::App for Calculator {
             ctx.set_pixels_per_point(5.0);
             configure_text_styles(ctx);
 
-            if ui
-                .add_enabled(false, egui::Button::new(self.display()))
-                .clicked()
-            {
-                unreachable!();
-            }
+            ui.with_layout(egui::Layout::right_to_left(egui::Align::TOP), |ui| {
+                if ui
+                    .add_enabled(false, egui::Button::new(self.display()))
+                    .clicked()
+                {
+                    unreachable!();
+                }
+            });
 
             ui.horizontal(|ui| {
                 if ui.button("C").clicked() {
